@@ -35,7 +35,7 @@ app.post('/file', (req, res) => {
                         secure: true, // this is true as port is 465
                         auth: {
                             user: 'ecarlosandres@gmail.com', //Gmail username
-                            pass: 'carloscadc' // Gmail password
+                            pass: 'contraseña' // Gmail password
                         }
                     });
 

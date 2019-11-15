@@ -4,10 +4,10 @@ var opcioncsv = (valor) => {
       document.getElementById("cuerpo").innerHTML = "";
       document.getElementById("cuerpo").innerHTML = " <br><form id='archivoform' class='form-group'enctype='multipart/form-data' method='post' name='archivo'>" +
         "<label>Ingrese el archivo</label>" +
-        "<input name='file1' class='form-control' type='file' id='file' required>" +
+        "<input name='file1' class='form-control' type='file' id='file' accept='.csv' required>" +
         "<label>Nombre Dataset</label>" +
-        "<input class='form-control' id='nombre' name='nombre' required>"+
-        "<label>email</label>"+
+        "<input class='form-control' id='nombre' name='nombre' required>" +
+        "<label>email</label>" +
         "<input type='email' class='form-control' id='email' name='email' required>"
 
       document.getElementById("cuerpo").innerHTML += "<input type='submit' onclick='envio(" + valor + ")' class='btn btn-primary btn-block'> </form>"
@@ -33,27 +33,29 @@ var opcioncsv = (valor) => {
 
 var form = document.forms.namedItem(document.getElementById("archivoform"));
 var envio = (loq) => {
-  console.log(loq)
-  console.log("datos en archivo")
-  oData = new FormData(document.getElementById("archivoform"));
-
-
-  var oReq = new XMLHttpRequest();
-  oReq.open("POST", "http://localhost:3000/file", true);
-  oReq.onload = function (oEvent) {
-    if (oReq.status == 200) {
-      console.log("Uploaded!");
-      console.log(oReq.response);
-    } else {
-      console.log("Error " + oReq.status + " occurred when trying to upload your file.<br \/>");
-    }
-  };
-
-  oReq.send(oData);
-  console.log("enviar")
+  if (document.getElementById("file").value != "" && document.getElementById("nombre").value != "" && document.getElementById("email").value != "") {
+    console.log(loq)
+    console.log("datos en archivo")
+    oData = new FormData(document.getElementById("archivoform"));
+    var oReq = new XMLHttpRequest();
+    oReq.open("POST", "http://localhost:3000/file", true);
+    oReq.onload = function (oEvent) {
+      if (oReq.status == 200) {
+        console.log("Uploaded!");
+        console.log(oReq.response);
+      } else {
+        console.log("Error " + oReq.status + " occurred when trying to upload your file.<br \/>");
+      }
+    };
+    oReq.send(oData);
+    console.log("enviar")
+    alert("DATOS ENVIADOS AL SERVIDOR \n Pronto recibira un correo con los resultados")
+  }else{
+    alert("FALTAN LLENAR CAMPOS")
+  }
 }
 
-var enviolink = (valor)=>{
+var enviolink = (valor) => {
   console.log("datos en link")
   oData = new FormData(document.getElementById("linkform"));
 

@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="icon" type="image/png" href="assets/logo-pandas.png">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -27,17 +28,22 @@
         </div>
     </nav>
 
-<br>
-<br>
+    <br>
+    <br>
 
-    <div class="container" >
+    <div class="container">
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Alerta</h4>
+            El tiempo llegada de los resultados del dataset depende de la cantidad de variables y datos.
+        </div>
+        <br>
         <select class="form-control" id="tipocsv" onchange="opcioncsv(document.getElementById('tipocsv').value)">
             <option value="none">--SELECCIONAR--</option>
             <option value="link">LINK</option>
             <option value="file">ARCHIVO</option>
         </select>
-
         <div id="cuerpo"></div>
+
     </div>
 
 
